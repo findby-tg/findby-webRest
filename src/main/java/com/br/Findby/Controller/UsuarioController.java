@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +40,13 @@ public class UsuarioController {
     public Login logarteste(@RequestBody Login login) {
         login.setSenha(Utils.encoder().encode(login.getSenha()));
         return login;
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> cadastrarUsuario(@RequestBody Usuario usuario){
+
+         usuarioService.cadastrarUsuario(usuario);
+         return  new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
 

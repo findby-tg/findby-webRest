@@ -16,11 +16,11 @@ import java.util.Map;
 @Service
 public class UsuarioService {
     @Autowired
-    private UsuarioRepository usarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     public List<Usuario> listarUsuarios(){
 
-        return usarioRepository.findAll();
+        return usuarioRepository.findAll();
 
 
     }
@@ -31,7 +31,7 @@ public class UsuarioService {
         retorno.put("tipoUsuario", "");
 
         //login.setSenha(Utils.encoder().encode(login.getSenha()));
-        List<Usuario> lsUser = usarioRepository.findByLoginEmail(login.getUsuario());
+        List<Usuario> lsUser = usuarioRepository.findByLoginEmail(login.getUsuario());
         for(Usuario lg : lsUser) {
             if(Utils.encoder().matches(login.getSenha(), lg.getSenha())) {
                 retorno.put("valido", true);
@@ -41,4 +41,9 @@ public class UsuarioService {
         return retorno;
     }
 
+    public Usuario cadastrarUsuario(Usuario usuario) {
+
+       usuario.setSenha(Utils.encoder().encode(usuario.getSenha()));
+        return usuarioRepository.save(usuario);
+    }
 }
