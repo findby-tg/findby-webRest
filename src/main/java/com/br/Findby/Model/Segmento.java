@@ -15,4 +15,21 @@ public class Segmento {
     @JoinColumn(name="codSegmento")
     private List<Usuario> usuarios;
 
- }
+
+    public Integer getCodSegmento() {
+        return codSegmento;
+    }
+
+    public void setCodSegmento(Integer codSegmento) {
+        this.codSegmento = codSegmento;
+    }
+
+    public String getNomeSegmento() {
+        return nomeSegmento;
+    }
+
+    public void setNomeSegmento(String nomeSegmento) {
+        this.nomeSegmento = nomeSegmento;
+    }
+
+  }
