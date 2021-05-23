@@ -2,6 +2,8 @@ package com.br.Findby.Model;
 
 
 import javax.persistence.*;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "Usuario")
@@ -10,7 +12,6 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long codUsuario;
-    private Long codSegmento;
     private String nome;
     private String email;
     private String login;
@@ -22,6 +23,17 @@ public class Usuario {
     private Integer raio;
     private String senha;
 
+    @ManyToOne
+    @JoinColumn(name="codSegmento")
+    private Segmento segmento;
+
+    @OneToMany
+    @JoinColumn(name="codUsuario")
+    private List<Endereco> enderecos;
+    
+    @OneToMany
+    @JoinColumn(name="codUsuario")
+    private List<Contato> contatos;
 
     public Usuario() {
     }
@@ -115,12 +127,28 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Long getCodSegmento() {
-        return codSegmento;
+    public Segmento getSegmento() {
+        return segmento;
     }
 
-    public void setCodSegmento(Long codSegmento) {
-        this.codSegmento = codSegmento;
+    public void setSegmento(Segmento segmento) {
+        this.segmento = segmento;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+
+    public List<Contato> getContatos() {
+        return contatos;
+    }
+
+    public void setContatos(List<Contato> contatos) {
+        this.contatos = contatos;
     }
 
     @Override

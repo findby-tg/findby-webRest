@@ -15,6 +15,10 @@ public class Segmento {
     @JoinColumn(name="codSegmento")
     private List<Usuario> usuarios;
 
+    @OneToMany
+    @JoinColumn(name="codSegmento")
+    private List<Categoria> categorias;
+
 
     public Integer getCodSegmento() {
         return codSegmento;
@@ -30,6 +34,14 @@ public class Segmento {
 
     public void setNomeSegmento(String nomeSegmento) {
         this.nomeSegmento = nomeSegmento;
+    }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
   }
