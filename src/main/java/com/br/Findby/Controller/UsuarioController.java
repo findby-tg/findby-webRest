@@ -1,7 +1,6 @@
 package com.br.Findby.Controller;
 
 import com.br.Findby.Model.Login;
-import com.br.Findby.Model.LoginDTO;
 import com.br.Findby.Model.Usuario;
 import com.br.Findby.Service.UsuarioService;
 import com.br.Findby.Utils.Utils;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -28,10 +28,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public Login logar(@RequestBody Login login) {
+    public Map<String,Object> logar(@RequestBody Login login) {
+        return usuarioService.validaLogin(login);
+    }
+
+    @PostMapping("/loginTeste")
+    public Login logarteste(@RequestBody Login login) {
         login.setSenha(Utils.encoder().encode(login.getSenha()));
-
-
         return login;
     }
 }
