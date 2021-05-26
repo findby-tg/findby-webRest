@@ -3,6 +3,7 @@ package com.br.Findby.Controller;
 import com.br.Findby.Model.Favoritos;
 import com.br.Findby.Service.FavoritoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class FavoritoController {
     @Autowired
     private FavoritoService favoritoService;
 
+    @CrossOrigin(origins = "*")
     @GetMapping
     public List<Favoritos> listar(){
 
@@ -24,6 +26,7 @@ public class FavoritoController {
 
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
     public List<Favoritos> favoritosPorUsuario(@PathVariable Integer id){
 
