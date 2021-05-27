@@ -3,7 +3,6 @@ package com.br.Findby.Controller;
 import com.br.Findby.Model.Login;
 import com.br.Findby.Model.Usuario;
 import com.br.Findby.Service.UsuarioService;
-import com.br.Findby.Utils.Utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

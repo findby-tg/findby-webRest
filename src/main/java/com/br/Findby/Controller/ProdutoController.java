@@ -20,8 +20,14 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @CrossOrigin(origins = "*")
+    @GetMapping("")
+    public List<Produto> listarProd() {
+        return produtoService.listarProdutos();
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-    public List<Produto> listar(@PathVariable int id) {
+    public List<Produto> listarProdVend(@PathVariable int id) {
         return produtoService.listarProdutosVendedor(id);
     }
 }
