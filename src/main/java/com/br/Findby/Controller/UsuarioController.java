@@ -7,6 +7,7 @@ import com.br.Findby.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -30,6 +32,12 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> listar(){
         return usuarioService.listarUsuarios();
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/{id}")
+    public Optional<Usuario> obterUsuario(@PathVariable Long id) {
+        return usuarioService.obterUsuario(id);
     }
 
     @CrossOrigin(origins = "*")
