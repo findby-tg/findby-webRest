@@ -33,12 +33,14 @@ public class UsuarioService {
         Map<String,Object> retorno = new HashMap<String,Object>();
         retorno.put("valido", false);
         retorno.put("tipoUsuario", "");
+        retorno.put("idUsuario", "");
 
         List<Usuario> lsUser = usuarioRepository.findByLoginEmail(login.getUsuario());
         for(Usuario lg : lsUser) {
             if(Utils.encoder().matches(login.getSenha(), lg.getSenha())) {
                 retorno.put("valido", true);
                 retorno.put("tipoUsuario", lg.getTipoUsuario());
+                retorno.put("idUsuario", lg.getCodUsuario());
             }
         }
         return retorno;
