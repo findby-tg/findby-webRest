@@ -35,6 +35,12 @@ public class UsuarioController {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/tipo/{tipo}")
+    public List<Usuario> listarVendedores(@PathVariable String tipo){
+        return usuarioService.listarUsuariosByTipo(tipo);
+    }
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
     public Optional<Usuario> obterUsuario(@PathVariable Long id) {
         return usuarioService.obterUsuario(id);

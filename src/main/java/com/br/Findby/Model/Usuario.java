@@ -22,6 +22,7 @@ public class Usuario {
     private String tipoPessoa;
     private Integer raio;
     private String senha;
+    private String indUsaLatLong;
 
     @ManyToOne
     @JoinColumn(name="codSegmento")
@@ -150,6 +151,16 @@ public class Usuario {
     public void setContatos(List<Contato> contatos) {
         this.contatos = contatos;
     }
+
+    public String getIndUsaLatLong() {
+        return indUsaLatLong;
+    }
+
+
+    public void setIndUsaLatLong(String indUsaLatLong) {
+        this.indUsaLatLong = indUsaLatLong;
+    }
+
 
     @Override
     public boolean equals(Object o) {

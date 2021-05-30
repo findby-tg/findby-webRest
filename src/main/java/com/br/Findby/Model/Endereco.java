@@ -19,6 +19,7 @@ public class Endereco {
     private Double latitude;
     private Double longitude;
     private Integer raio;
+    private String indEnderecoSelec;
     
     public Integer getCodEndereco() {
         return codEndereco;
@@ -92,7 +93,13 @@ public class Endereco {
     public void setRaio(Integer raio) {
         this.raio = raio;
     }
-    
+    public String getIndEnderecoSelec() {
+        return indEnderecoSelec;
+    }
+    public void setIndEnderecoSelec(String indEnderecoSelec) {
+        this.indEnderecoSelec = indEnderecoSelec;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
