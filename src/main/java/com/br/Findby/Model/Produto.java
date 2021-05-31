@@ -16,6 +16,7 @@ public class Produto {
     private String descricao;
     private Double preco;
     private String marca;
+    private Integer categoria;
 
     public Integer getCodProduto() {
         return codProduto;
@@ -59,7 +60,13 @@ public class Produto {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
+    public Integer getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(Integer categoria) {
+        this.categoria = categoria;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
