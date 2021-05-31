@@ -16,7 +16,7 @@ public class Produto {
     private String descricao;
     private Double preco;
     private String marca;
-    private Integer categoria;
+    private Integer codCategoria;
 
     public Integer getCodProduto() {
         return codProduto;
@@ -60,11 +60,11 @@ public class Produto {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-    public Integer getCategoria() {
-        return categoria;
+    public Integer getCodCategoria() {
+        return codCategoria;
     }
-    public void setCategoria(Integer categoria) {
-        this.categoria = categoria;
+    public void setCodCategoria(Integer codCategoria) {
+        this.codCategoria = codCategoria;
     }
     
     @Override
