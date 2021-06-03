@@ -11,7 +11,8 @@ import java.util.Objects;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long codUsuario;
+    private Long codUsuario;
+    private Integer codSegmento;
     private String nome;
     private String email;
     private String login;
@@ -23,10 +24,13 @@ public class Usuario {
     private Integer raio;
     private String senha;
     private String indUsaLatLong;
+    private String imgUser;
+    private String indUserAtivo;
 
-    @ManyToOne
+
+    /*@ManyToOne
     @JoinColumn(name="codSegmento")
-    private Segmento segmento;
+    private Segmento segmento;*/
 
     @OneToMany
     @JoinColumn(name="codUsuario")
@@ -48,7 +52,17 @@ public class Usuario {
         this.codUsuario = codUsuario;
     }
 
-       public String getNome() {
+    public Integer getCodSegmento() {
+        return codSegmento;
+    }
+
+
+    public void setCodSegmento(Integer codSegmento) {
+        this.codSegmento = codSegmento;
+    }
+
+
+    public String getNome() {
         return nome;
     }
 
@@ -128,14 +142,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Segmento getSegmento() {
-        return segmento;
-    }
-
-    public void setSegmento(Segmento segmento) {
-        this.segmento = segmento;
-    }
-
     public List<Endereco> getEnderecos() {
         return enderecos;
     }
@@ -156,9 +162,24 @@ public class Usuario {
         return indUsaLatLong;
     }
 
-
     public void setIndUsaLatLong(String indUsaLatLong) {
         this.indUsaLatLong = indUsaLatLong;
+    }
+
+    public String getImgUser() {
+        return imgUser;
+    }
+
+    public void setImgUser(String imgUser) {
+        this.imgUser = imgUser;
+    }
+
+    public String getIndUserAtivo() {
+        return indUserAtivo;
+    }
+
+    public void setIndUserAtivo(String indUserAtivo) {
+        this.indUserAtivo = indUserAtivo;
     }
 
 

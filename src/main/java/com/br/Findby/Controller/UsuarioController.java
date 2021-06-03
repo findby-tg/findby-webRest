@@ -55,9 +55,13 @@ public class UsuarioController {
     @CrossOrigin(origins = "*")
     @PostMapping
     public ResponseEntity<Void> cadastrarUsuario(@RequestBody Usuario usuario){
-
+        try {
          usuarioService.cadastrarUsuario(usuario);
-         return  new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
 

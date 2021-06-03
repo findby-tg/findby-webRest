@@ -17,6 +17,7 @@ public class Produto {
     private Double preco;
     private String marca;
     private Integer codCategoria;
+    private String imgProd;
 
     public Integer getCodProduto() {
         return codProduto;
@@ -65,6 +66,12 @@ public class Produto {
     }
     public void setCodCategoria(Integer codCategoria) {
         this.codCategoria = codCategoria;
+    }
+    public String getImgProd() {
+        return imgProd;
+    }
+    public void setImgProd(String imgProd) {
+        this.imgProd = imgProd;
     }
     
     @Override
