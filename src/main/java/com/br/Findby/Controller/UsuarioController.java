@@ -4,8 +4,10 @@ import com.br.Findby.Model.Login;
 import com.br.Findby.Model.Usuario;
 import com.br.Findby.Service.UsuarioService;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,6 +64,31 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/favorito")
+    public  ResponseEntity<Void> favoritarVendedor(@RequestBody Map<String, Object> favorito) {
+        try {
+            JSONObject jsonFavorito = new JSONObject(favorito);
+            usuarioService.adicionaFavorito(jsonFavorito.getInt("codUsuario"), jsonFavorito.getInt("codVendedor"));
+           } catch (Exception e) {
+               e.printStackTrace();
+               return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+           }
+           return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @CrossOrigin(origins = "*")
+    @DeleteMapping("/favorito/{codUsuario}/{codVendedor}")
+    public  ResponseEntity<Void> removerFavoritarVendedor(@PathVariable int codUsuario, @PathVariable int codVendedor) {
+        try {
+            usuarioService.removeFavorito(codUsuario, codVendedor);
+           } catch (Exception e) {
+               e.printStackTrace();
+               return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+           }
+           return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }
 

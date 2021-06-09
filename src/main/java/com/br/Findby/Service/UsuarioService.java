@@ -2,6 +2,7 @@ package com.br.Findby.Service;
 
 import com.br.Findby.Model.Login;
 import com.br.Findby.Model.Usuario;
+import com.br.Findby.Repository.FavoritoRepository;
 import com.br.Findby.Repository.UsuarioRepository;
 import com.br.Findby.Utils.Utils;
 
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private FavoritoRepository favoritoRepository;
 
     public List<Usuario> listarUsuarios(){
 
@@ -54,5 +57,21 @@ public class UsuarioService {
 
        usuario.setSenha(Utils.encoder().encode(usuario.getSenha()));
         return usuarioRepository.save(usuario);
+    }
+
+    public void removeFavorito(int codUsuario, int codVendedor) {
+        try {
+            favoritoRepository.deleteByVendedor(codUsuario, codVendedor);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void adicionaFavorito(int codUsuario, int codVendedor) {
+        try {
+            favoritoRepository.adicionaByVendedor(codUsuario, codVendedor);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
