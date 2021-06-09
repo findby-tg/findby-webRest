@@ -33,11 +33,11 @@ public class CategoriaController {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/favorito/{codUsuario}")
-    public  ResponseEntity<Void> favoritarCategoria(@PathVariable int codUsuario, @RequestBody Map<String, Object> favorito) {
+    @PostMapping("/favorito")
+    public  ResponseEntity<Void> favoritarCategoria(@RequestBody Map<String, Object> favorito) {
         try {
             JSONObject jsonFavorito = new JSONObject(favorito);
-            categoriaService.adicionaFavorito(codUsuario, jsonFavorito.getInt("codCategoria"));
+            categoriaService.adicionaFavorito(jsonFavorito.getInt("codUsuario"), jsonFavorito.getInt("codCategoria"));
            } catch (Exception e) {
                e.printStackTrace();
                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -46,11 +46,10 @@ public class CategoriaController {
     }
 
     @CrossOrigin(origins = "*")
-    @DeleteMapping("/favorito/{codUsuario}")
-    public  ResponseEntity<Void> removerFavoritarCategoria(@PathVariable int codUsuario, @RequestBody Map<String, Object> favorito) {
+    @DeleteMapping("/favorito/{codUsuario}/{codCategoria}")
+    public  ResponseEntity<Void> removerFavoritarCategoria(@PathVariable int codUsuario, @PathVariable int codCategoria) {
         try {
-            JSONObject jsonFavorito = new JSONObject(favorito);
-            categoriaService.removeFavorito(codUsuario, jsonFavorito.getInt("codCategoria"));
+            categoriaService.removeFavorito(codUsuario, codCategoria);
            } catch (Exception e) {
                e.printStackTrace();
                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,7 +1,6 @@
 package com.br.Findby.Controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.br.Findby.Model.Endereco;
 import com.br.Findby.Service.EnderecoService;
