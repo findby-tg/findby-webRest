@@ -21,4 +21,8 @@ public class EnderecoService {
     public List<Endereco> listarEnderecos(int codUsuario) {
         return enderecoRepository.findByUsuario(codUsuario);
     }
+
+    public void inserirEndereco(Endereco endereco) {
+        enderecoRepository.save(endereco);
+    }
 }
