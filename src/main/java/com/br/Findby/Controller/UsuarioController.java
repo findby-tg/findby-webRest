@@ -55,6 +55,12 @@ public class UsuarioController {
     }
 
     @CrossOrigin(origins = "*")
+    @PostMapping("/loginSenha")
+    public String retornaSenha(@RequestBody Login login) {
+        return usuarioService.retornaSenha(login);
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping
     public ResponseEntity<Void> cadastrarUsuario(@RequestBody Usuario usuario){
         try {

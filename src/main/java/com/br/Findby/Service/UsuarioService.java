@@ -53,6 +53,10 @@ public class UsuarioService {
         return retorno;
     }
 
+    public String retornaSenha(Login login) {
+        return Utils.encoder().encode(login.getSenha());
+    }
+
     public Usuario cadastrarUsuario(Usuario usuario) {
 
        usuario.setSenha(Utils.encoder().encode(usuario.getSenha()));
